@@ -2,9 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 import uuid from 'uuid/v4';
 
 const SummarySchema = new Schema({
-  userId: {
+  userHash: {
     type: String,
-    required: 'User id is required',
+    required: 'User hash is required',
   },
   hash: {
     type: String,

@@ -2,8 +2,8 @@ import { Summary } from '../models';
 
 export default {
   async createSummary(data) {
-    const { userId } = data;
-    const summaryCountByUserId = await Summary.count({ userId });
+    const { userHash } = data;
+    const summaryCountByUserId = await Summary.count({ userHash });
 
     if (summaryCountByUserId === 3) {
       throw new AppError({ status: 400, message: 'User can have no more than three summary' });

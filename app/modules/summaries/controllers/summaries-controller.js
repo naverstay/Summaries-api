@@ -6,7 +6,7 @@ export default {
   async create(ctx) {
     const summaryData = {
       ...pick(ctx.request.body, Summary.createFields),
-      userId: ctx.user._id,
+      userHash: ctx.user.hash,
     };
 
     const { _id } = await SummaryService.createSummary(summaryData);
@@ -22,13 +22,13 @@ export default {
         body,
       },
       user: {
-        _id: userId,
+        hash,
       },
       summary,
     } = ctx;
 
-    if (summary.userId !== userId.toHexString()) {
-      ctx.throw(403, `Forbidden. Summary with id "${summary._id}" dont belong to user with id ${userId}`);
+    if (summary.userHash !== hash) {
+      ctx.throw(403, `Forbidden. Summary with hash "${summary.hash}" dont belong to user with hash ${hash}`);
     }
 
     const newData = pick(body, Summary.createFields);
@@ -40,18 +40,18 @@ export default {
   async delete(ctx) {
     const {
       user: {
-        _id: userId,
+        hash,
       },
       summary,
     } = ctx;
 
-    if (summary.userId !== userId.toHexString()) {
-      ctx.throw(403, `Forbidden. Summary with id "${summary._id}" dont belong to user with id ${userId}`);
+    if (summary.userHash !== hash) {
+      ctx.throw(403, `Forbidden. Summary with hash "${summary.hash}" dont belong to user with id ${hash}`);
     }
 
     await summary.remove();
 
-    ctx.body = { data: { id: summary._id } };
+    ctx.body = { data: { id: summary.hash } };
   },
   getSummary(ctx) {
     const { summary } = ctx;
