@@ -1,4 +1,4 @@
-import UserService from '../services';
+import { UserService } from '../services';
 import { Summary } from '../../summaries';
 
 export default {
