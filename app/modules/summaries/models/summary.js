@@ -63,7 +63,7 @@ const SummarySchema = new Schema({
       trim: true,
     },
   }],
-});
+}, { timestamps: true });
 
 SummarySchema.statics.createFields = ['title', 'phone', 'skype', 'description', 'history', 'tags', 'hash'];
 
