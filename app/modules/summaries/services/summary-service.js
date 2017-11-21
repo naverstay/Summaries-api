@@ -25,7 +25,7 @@ export default {
   async search({
     tags,
     size,
-    offset,
+    page,
     title,
   }) {
     const query = {
@@ -39,17 +39,23 @@ export default {
     const count = await Summary
       .count(query)
       .sort({ updatedAt: '-1' });
-    const pages = count / size;
+    let pages = count / size;
+
+    if (pages.toString().indexOf('.') !== -1) {
+      pages = parseInt(pages) + 1;
+    }
+
     const summaries = await Summary
       .find(query)
       .sort({ updatedAt: '-1' })
       .limit(size)
-      .skip(offset);
+      .skip((page - 1) * size);
 
       return {
         summaries,
         count,
         pages,
+        page,
       };
   },
 };

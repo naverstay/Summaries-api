@@ -66,25 +66,29 @@ export default {
 
   async searchSummaries(ctx) {
     const MAX_SIZE = 20;
-    const OFFSET = 0;
-    const queryParams = pick(ctx.request.query, ['title', 'tags', 'size', 'offset']);
+    const PAGE = 1;
+    const queryParams = pick(ctx.request.query, ['title', 'tags', 'size', 'page']);
     const pagination = {
       title: queryParams.title ? queryParams.title : '',
       tags: queryParams.tags ? queryParams.tags.split(',') : [],
       size: parseInt(queryParams.size),
-      offset: parseInt(queryParams.offset),
+      page: parseInt(queryParams.page),
     };
 
     if (!pagination.size || pagination.size > MAX_SIZE) {
       pagination.size = MAX_SIZE;
     }
 
-    if (!pagination.offset) {
-      pagination.offset = OFFSET;
+    if (!pagination.page) {
+      pagination.page = PAGE;
     }
 
-    const data = await SummaryService.search(pagination);
+    const { summaries, ...rest } = await SummaryService.search(pagination);
 
-    ctx.body = { data };
+    ctx.body = {
+      data: summaries,
+      filter: pagination,
+      ...rest,
+    };
   },
 };
