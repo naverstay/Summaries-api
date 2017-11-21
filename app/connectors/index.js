@@ -1,5 +1,6 @@
 import { MONGO_URI } from '../config';
 import mongooseConnector from './mongoose-connector';
+import elsConnector from './elasticsearch-connector';
 import server from '../server';
 
 async function connectorsInit() {
@@ -13,6 +14,7 @@ async function connectorsInit() {
 
 export {
   mongooseConnector,
+  elsConnector,
 };
 
 export default connectorsInit;
