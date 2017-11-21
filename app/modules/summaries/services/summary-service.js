@@ -21,4 +21,35 @@ export default {
       throw new AppError({ status: 400, ...e });
     }
   },
+
+  async search({
+    tags,
+    size,
+    offset,
+    title,
+  }) {
+    const query = {
+      title: { $regex: title },
+    };
+
+    if (tags.length) {
+      query.tags = tags;
+    }
+
+    const count = await Summary
+      .count(query)
+      .sort({ updatedAt: '-1' });
+    const pages = count / size;
+    const summaries = await Summary
+      .find(query)
+      .sort({ updatedAt: '-1' })
+      .limit(size)
+      .skip(offset);
+
+      return {
+        summaries,
+        count,
+        pages,
+      };
+  },
 };

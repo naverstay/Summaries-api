@@ -63,4 +63,28 @@ export default {
 
     ctx.body = { data: pick(summary, Summary.createFields) };
   },
+
+  async searchSummaries(ctx) {
+    const MAX_SIZE = 20;
+    const OFFSET = 0;
+    const queryParams = pick(ctx.request.query, ['title', 'tags', 'size', 'offset']);
+    const pagination = {
+      title: queryParams.title ? queryParams.title : '',
+      tags: queryParams.tags ? queryParams.tags.split(',') : [],
+      size: parseInt(queryParams.size),
+      offset: parseInt(queryParams.offset),
+    };
+
+    if (!pagination.size || pagination.size > MAX_SIZE) {
+      pagination.size = MAX_SIZE;
+    }
+
+    if (!pagination.offset) {
+      pagination.offset = OFFSET;
+    }
+
+    const data = await SummaryService.search(pagination);
+
+    ctx.body = { data };
+  },
 };

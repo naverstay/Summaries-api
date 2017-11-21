@@ -8,6 +8,7 @@ const router = new Router({ prefix: '/summaries' });
 
 router
   .post('/', checkUser(), summariesController.create)
+  .get('/', summariesController.searchSummaries)
   .param('hash', chekSummary())
   .put('/:hash', checkUser(), summariesController.update)
   .delete('/:hash', checkUser(), summariesController.delete)
