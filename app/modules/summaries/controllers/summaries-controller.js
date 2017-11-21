@@ -6,7 +6,7 @@ export default {
   async create(ctx) {
     const summaryData = {
       ...pick(ctx.request.body, Summary.createFields),
-      userHash: ctx.user.hash,
+      userHash: ctx.state.user.hash,
     };
 
     const { _id } = await SummaryService.createSummary(summaryData);
@@ -21,10 +21,12 @@ export default {
       request: {
         body,
       },
-      user: {
-        hash,
+      state: {
+        user: {
+          hash,
+        },
+        summary,
       },
-      summary,
     } = ctx;
 
     if (summary.userHash !== hash) {
@@ -39,10 +41,12 @@ export default {
 
   async delete(ctx) {
     const {
-      user: {
-        hash,
+      state: {
+        user: {
+          hash,
+        },
+        summary,
       },
-      summary,
     } = ctx;
 
     if (summary.userHash !== hash) {
@@ -53,8 +57,9 @@ export default {
 
     ctx.body = { data: { id: summary.hash } };
   },
+
   getSummary(ctx) {
-    const { summary } = ctx;
+    const { state: { summary } } = ctx;
 
     ctx.body = { data: pick(summary, Summary.createFields) };
   },

@@ -7,7 +7,7 @@ export default () => async (hash, ctx, next) => {
       ctx.throw(404, `User with hash "${hash}" not found`);
     }
 
-    ctx.user = user;
+    ctx.state.user = user;
 
     await next();
   };

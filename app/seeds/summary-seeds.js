@@ -14,7 +14,7 @@ export default (users) => {
       title: faker.lorem.words(2, 5),
       description: faker.lorem.lines(4, 10),
       tags: faker.lorem.words(2, 6).split(' '),
-      userHash: users[faker.random.number(0, 19)].hash,
+      userHash: users[faker.random.number(19)].hash,
     });
 
     promises.push(summaryPromise);
