@@ -26,7 +26,6 @@
     "bcrypt": "^1.0.3",
     "config": "^1.26.2",
     "dotenv": "^4.0.0",
-    "elasticsearch": "^14.0.0",
     "jsonwebtoken": "^8.1.0",
     "keymirror": "^0.1.1",
     "koa": "^2.3.0",
