@@ -33,7 +33,7 @@ export default {
     };
 
     if (tags.length) {
-      query.tags = tags;
+      query.tags = { $in: tags };
     }
 
     const count = await Summary

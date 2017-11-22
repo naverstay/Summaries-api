@@ -1,6 +1,7 @@
 import pick from 'lodash/pick';
 import { Summary } from '../models';
 import { SummaryService } from '../services';
+import parseQueryForSearch from '../helpers/parseQueryForSearch';
 
 export default {
   async create(ctx) {
@@ -65,29 +66,13 @@ export default {
   },
 
   async searchSummaries(ctx) {
-    const MAX_SIZE = 20;
-    const PAGE = 1;
     const queryParams = pick(ctx.request.query, ['title', 'tags', 'size', 'page']);
-    const pagination = {
-      title: queryParams.title ? queryParams.title : '',
-      tags: queryParams.tags ? queryParams.tags.split(',') : [],
-      size: parseInt(queryParams.size),
-      page: parseInt(queryParams.page),
-    };
-
-    if (!pagination.size || pagination.size > MAX_SIZE) {
-      pagination.size = MAX_SIZE;
-    }
-
-    if (!pagination.page) {
-      pagination.page = PAGE;
-    }
-
-    const { summaries, ...rest } = await SummaryService.search(pagination);
+    const filter = parseQueryForSearch(queryParams);
+    const { summaries, ...rest } = await SummaryService.search(filter);
 
     ctx.body = {
       data: summaries,
-      filter: pagination,
+      filter,
       ...rest,
     };
   },
