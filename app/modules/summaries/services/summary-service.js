@@ -36,9 +36,7 @@ export default {
       query.tags = { $in: tags };
     }
 
-    const count = await Summary
-      .count(query)
-      .sort({ updatedAt: '-1' });
+    const count = await Summary.count(query);
     const pages = Math.ceil(count / size);
 
     const summaries = await Summary
