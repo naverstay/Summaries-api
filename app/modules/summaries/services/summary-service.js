@@ -39,11 +39,7 @@ export default {
     const count = await Summary
       .count(query)
       .sort({ updatedAt: '-1' });
-    let pages = count / size;
-
-    if (pages.toString().indexOf('.') !== -1) {
-      pages = parseInt(pages) + 1;
-    }
+    const pages = Math.ceil(count / size);
 
     const summaries = await Summary
       .find(query)
