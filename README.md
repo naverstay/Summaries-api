@@ -1,5 +1,33 @@
 # Summary API Server
-## Usage
+## Описание
+Код к [видео урокам](https://www.youtube.com/playlist?list=PLagB2DCVvgKn5XYysf5FpLQBbswAuJUwd) по написанию приложения по поиску разработчиков на javascript. Api сервер.
+
+## Основное библиотеки
+* [Babel](https://babeljs.io/)
+* [Koa](http://koajs.com/)
+* [Koa-router](https://github.com/alexmingoia/koa-router)
+* [Mongoose](https://github.com/Automattic/mongoose)
+
+## Настройка
+Перед запускоп приложения нужно передать в него `MONGO_URI`.
+Сдеалать это можно передав их при запуске приложения 
+```sh
+MONGO_URI=mongodb://localhost/my_database yarn dev 
+```
+
+Добавив в `./config/default.json`
+```
+"mongo": {
+  "uri": "mongodb://localhost/my_database yarn dev"
+},
+```
+Или создать файл .env
+```
+MONGO_URI=mongodb://localhost/my_database yarn dev
+```
+
+
+## Использование
 ```sh
 # Install dependencies
 yarn install
@@ -12,16 +40,16 @@ yarn start
 
 ```sh
 # Run server with nodemon
-yarn run dev
+yarn dev
 ```
 
 ```sh
 # Run lint
-yarn run lint
+yarn lint
 ```
 
 ```sh
 # fix lint errors
-yarn run lint:fix
+yarn lint:fix
 ```
 
