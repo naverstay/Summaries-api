@@ -25,7 +25,7 @@ MONGO_URI=mongodb://localhost/my_database yarn dev
 ```
 Или создать файл .env
 ```
-MONGO_URI=mongodb://localhost/my_database yarn dev
+MONGO_URI=mongodb://localhost/my_database
 ```
 
 
