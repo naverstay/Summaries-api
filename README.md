@@ -20,7 +20,7 @@ MONGO_URI=mongodb://localhost/my_database yarn dev
 Добавив в `./config/default.json`
 ```
 "mongo": {
-  "uri": "mongodb://localhost/my_database yarn dev"
+  "uri": "mongodb://localhost/my_database"
 },
 ```
 Или создать файл .env
