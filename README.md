@@ -2,7 +2,7 @@
 ## Описание
 Код к [видео урокам](https://www.youtube.com/playlist?list=PLagB2DCVvgKn5XYysf5FpLQBbswAuJUwd) по написанию приложения по поиску разработчиков на javascript. Api сервер.
 
-## Основное библиотеки
+## Основные библиотеки
 * [Babel](https://babeljs.io/)
 * [Koa](http://koajs.com/)
 * [Koa-router](https://github.com/alexmingoia/koa-router)
