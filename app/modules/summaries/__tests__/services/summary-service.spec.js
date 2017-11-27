@@ -17,6 +17,7 @@ describe('Summary Service', () => {
 
   afterAll(async () => {
     await close();
+    await dropDb();
   });
 
   it('success create summary', async () => {
