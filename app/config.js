@@ -1,9 +1,11 @@
 import dotenv from 'dotenv';
 import config from 'config';
 import envs from './constants/envs';
-import env from './utils/env';
+import env, { IS_DEV } from './utils/env';
 
-dotenv.config();
+if (IS_DEV) {
+  dotenv.config();
+}
 
 if (!envs[env]) {
   throw Error(`unknown env '${env}'`);

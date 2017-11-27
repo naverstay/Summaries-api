@@ -1,6 +1,6 @@
 import envs from '../constants/envs';
 
-const ENV = process.env.NODE_ENV || 'development';
+const ENV = process.env.NODE_ENV ? process.env.NODE_ENV.toLowerCase() : 'development';
 const IS_DEV = ENV === envs.development;
 const IS_PROD = ENV === envs.production;
 

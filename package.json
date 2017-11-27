@@ -8,7 +8,12 @@
     "lint": "eslint app",
     "lint:fix": "eslint --fix app",
     "dev": "nodemon --exec 'yarn lint && yarn start'",
-    "seed": "babel-node app/seeds"
+    "seed": "babel-node app/seeds",
+    "test": "NODE_ENV=TEST jest app"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "browser": false
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -20,7 +25,9 @@
     "eslint": "^4.8.0",
     "eslint-config-google": "^0.9.1",
     "faker": "^4.1.0",
-    "nodemon": "^1.12.1"
+    "jest": "^21.2.1",
+    "nodemon": "^1.12.1",
+    "supertest": "^3.0.0"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
