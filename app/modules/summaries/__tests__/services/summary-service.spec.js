@@ -23,7 +23,7 @@ describe('Summary Service', () => {
   it('success create summary', async () => {
     const summaryData = {
       userHash: 'some-hash',
-      title: 'Sumary title',
+      title: 'Summary title',
       description: 'Summary Description',
       tags: [
         'js',
@@ -40,7 +40,7 @@ describe('Summary Service', () => {
   it('error user can\'t create more than 3 summaries', async () => {
     const summaryData = {
       userHash: 'some-hash',
-      title: 'Sumary title',
+      title: 'Summary title',
       description: 'Summary Description',
       tags: [
         'js',
@@ -55,7 +55,7 @@ describe('Summary Service', () => {
     try {
       await SummaryService.createSummary(summaryData);
     } catch (e) {
-      expect(e).toEqual(new AppError({ status: 400, message: 'User can have no more than three summary' }));
+      expect(e).toEqual(new AppError({ status: 400, message: 'User can have no more than three summaries' }));
     }
   });
 

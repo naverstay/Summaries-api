@@ -4,7 +4,6 @@ import {
   close,
   dropDb,
 } from '../../../utils/mongo';
-import { Summary } from '../models';
 
 describe('Summaries routes', () => {
   describe('summaries search', () => {
