@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
 import config from 'config';
 import envs from './constants/envs';
-import env, { IS_DEV } from './utils/env';
+import env, { IS_TEST } from './utils/env';
 
-if (IS_DEV) {
+if (!IS_TEST) {
   dotenv.config();
 }
 
