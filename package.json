@@ -9,7 +9,7 @@
     "lint:fix": "eslint --fix app",
     "dev": "nodemon --exec 'yarn lint && yarn start'",
     "seed": "babel-node app/seeds",
-    "test": "NODE_ENV=TEST jest app"
+    "test": "NODE_ENV=test jest app"
   },
   "jest": {
     "testEnvironment": "node",
