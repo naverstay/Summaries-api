@@ -59,7 +59,7 @@ describe('Summary Service', () => {
     }
   });
 
-  it('error not valid data', async () => {
+  it('error on not valid data', async () => {
     try {
       await SummaryService.createSummary({});
     } catch (e) {
