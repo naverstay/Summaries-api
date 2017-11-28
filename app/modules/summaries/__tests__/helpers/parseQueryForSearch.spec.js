@@ -1,7 +1,7 @@
 import parseQueryForSearch from '../../helpers/parseQueryForSearch';
 
 describe('parseQueryForSearch', () => {
-  it('success parse empty query', () => {
+  it('parse query as expected with superfluous option', () => {
     const res = parseQueryForSearch({ fakeParam: 'ksdlfjklsdf' });
 
     expect(res).toEqual({
@@ -12,7 +12,7 @@ describe('parseQueryForSearch', () => {
     });
   });
 
-  it('success parse query', () => {
+  it('parse query as expected', () => {
     const data = {
       title: 'Senior js',
       tags: 'js,node',

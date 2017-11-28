@@ -49,7 +49,6 @@ export default {
         summaries,
         count,
         pages,
-        page,
       };
   },
 };

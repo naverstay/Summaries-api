@@ -16,8 +16,8 @@ describe('Summary Service', () => {
   });
 
   afterAll(async () => {
-    await close();
     await dropDb();
+    await close();
   });
 
   it('success create summary', async () => {
@@ -70,5 +70,5 @@ describe('Summary Service', () => {
       expect(errors).toHaveProperty('userHash');
       expect(errors).toHaveProperty('tags');
     }
-  })
+  });
 });
