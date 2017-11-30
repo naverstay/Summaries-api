@@ -23,11 +23,12 @@ MONGO_URI=mongodb://localhost/my_database yarn dev
   "uri": "mongodb://localhost/my_database"
 },
 ```
-Или создать файл .env
+Или создать файл `.env`
 ```
 MONGO_URI=mongodb://localhost/my_database
 ```
 
+Для тестов можно создать отдельный файл настроек `./config/test.json`
 
 ## Использование
 ```sh
@@ -55,3 +56,7 @@ yarn lint
 yarn lint:fix
 ```
 
+```sh
+# test
+yarn test
+```

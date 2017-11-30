@@ -14,7 +14,7 @@ describe('Summaries routes', () => {
       await server.close();
     });
 
-    it('no records in db', async () => {
+    it('no records by get all', async () => {
       const response = await supertest(server).get('/api/summaries');
 
       expect(response.body).toEqual({
