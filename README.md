@@ -28,7 +28,7 @@ MONGO_URI=mongodb://localhost/my_database yarn dev
 MONGO_URI=mongodb://localhost/my_database
 ```
 
-Для тестов можно создать отдельный файл настроек `./config/test.json`
+Для тестов можно создать отдельный файл настроек `./config/test.json` и передать в него `MONGO_URI` для тестирования 
 
 ## Использование
 ```sh
