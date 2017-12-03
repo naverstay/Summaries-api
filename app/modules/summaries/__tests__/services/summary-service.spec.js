@@ -20,7 +20,7 @@ describe('Summary Service', () => {
     await close();
   });
 
-  it('success create summary', async () => {
+  it('create summary as expected', async () => {
     const summaryData = {
       userHash: 'some-hash',
       title: 'Summary title',
@@ -31,9 +31,13 @@ describe('Summary Service', () => {
       ],
     };
 
-    const summary = await SummaryService.createSummary(summaryData);
+    const summaryModel = await SummaryService.createSummary(summaryData);
+    const summary = summaryModel.toObject();
 
-    expect(pick(summary.toObject(), Object.keys(summaryData))).toEqual(summaryData);
+    expect(pick(summary, Object.keys(summaryData))).toEqual(summaryData);
+    expect(summary).toHaveProperty('hash');
+    expect(summary).toHaveProperty('createdAt');
+    expect(summary).toHaveProperty('updatedAt');
     await dropDb();
   });
 

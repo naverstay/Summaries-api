@@ -51,11 +51,11 @@ describe('Summaries routes', () => {
       });
 
       // change title mongoose fo no match cases
-      const response = await supertest(server).get('/api/summaries?title=Se');
+      const response = await supertest(server).get('/api/summaries?title=se');
       const { body: { filter, data, count, pages } } = response;
 
       expect(filter).toEqual({
-          title: 'Se',
+          title: 'se',
           tags: [],
           size: 20,
           page: 1,

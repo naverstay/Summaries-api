@@ -29,7 +29,7 @@ export default {
     title,
   }) {
     const query = {
-      title: { $regex: title },
+      title: { $regex: new RegExp(title, 'ig') },
     };
 
     if (tags.length) {
