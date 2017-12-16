@@ -1,4 +1,4 @@
-# Summary API Server
+# Summaries API Server
 ## Описание
 Код к [видео урокам](https://www.youtube.com/playlist?list=PLagB2DCVvgKn5XYysf5FpLQBbswAuJUwd) по написанию приложения по поиску разработчиков на javascript. Api сервер.
 
