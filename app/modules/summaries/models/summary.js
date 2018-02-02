@@ -63,9 +63,16 @@ const SummarySchema = new Schema({
       trim: true,
     },
   }],
-}, { timestamps: true });
+}, { timestamps: true, toJSON: { virtuals: true } });
 
 SummarySchema.statics.createFields = ['title', 'phone', 'skype', 'description', 'history', 'tags'];
+
+SummarySchema.virtual('user', {
+  ref: 'user',
+  localField: 'userHash',
+  foreignField: 'hash',
+  justOne: true,
+});
 
 SummarySchema.pre('save', function(next) {
   if (!this.hash) {

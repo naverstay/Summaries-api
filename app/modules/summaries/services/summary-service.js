@@ -41,6 +41,7 @@ export default {
 
     const summaries = await Summary
       .find(query)
+      .populate('user')
       .sort({ updatedAt: '-1' })
       .limit(size)
       .skip((page - 1) * size);
