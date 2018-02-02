@@ -1,4 +1,4 @@
-# Summary API Server
+# Summaries API Server
 ## Описание
 Код к [видео урокам](https://www.youtube.com/playlist?list=PLagB2DCVvgKn5XYysf5FpLQBbswAuJUwd) по написанию приложения по поиску разработчиков на javascript. Api сервер.
 
@@ -28,7 +28,7 @@ MONGO_URI=mongodb://localhost/my_database yarn dev
 MONGO_URI=mongodb://localhost/my_database
 ```
 
-Для тестов можно создать отдельный файл настроек `./config/test.json` и передать в него `MONGO_URI` для тестирования 
+Для настройки тестов отдельный файл `./config/test.json`, `mongo.uri` установлен поумолчанию на локальный образ `mognodb`
 
 ## Использование
 ```sh
