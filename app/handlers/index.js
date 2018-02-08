@@ -1,6 +1,6 @@
 import bodyParser from 'koa-bodyparser';
 import logger from 'koa-logger';
-import cors from 'koa-cors';
+import cors from 'koa2-cors';
 import { IS_DEV } from '../utils/env';
 import error from './error';
 import jwt from './jwt';
