@@ -1,4 +1,3 @@
-import queryString from 'querystring';
 import pick from 'lodash/pick';
 import { Summary } from '../models';
 import { SummaryService } from '../services';
@@ -67,9 +66,8 @@ export default {
   },
 
   async searchSummaries(ctx) {
-    const params = queryString.parse(ctx.request.querystring);
-    const queryParams = pick(params, ['title', 'tags', 'size', 'page']);
-    const filter = parseQueryForSearch(queryParams);
+    const query = ctx.request.querystring;
+    const filter = parseQueryForSearch(query);
     const { summaries, ...rest } = await SummaryService.search(filter);
 
     ctx.body = {
